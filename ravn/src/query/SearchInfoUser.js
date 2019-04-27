@@ -55,8 +55,9 @@ export const GET_CURRENT_USER = gql` query user($name: String!){
 
 */
 export const GET_LIST_DATA =gql`
-query getListData($nameUser: String!, $typeData:SearchType!,$totalPerPage:Int!,$cursor:String!) {
-  search(query: $nameUser, type: $typeData, first:$totalPerPage ,after:$cursor) {
+
+query getListData($queryString: String!, $typeData:SearchType!,$totalPerPage:Int!,$prev:String,$next:String) {
+  search(query: $queryString, type: $typeData, first:$totalPerPage,before:$prev ,after:$next) {
     userCount
     edges {
       node {
@@ -84,6 +85,9 @@ query getListData($nameUser: String!, $typeData:SearchType!,$totalPerPage:Int!,$
          
         }
       }cursor
+    }  pageInfo {
+      endCursor
+      hasNextPage
     }
   }
 }
