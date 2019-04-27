@@ -1,3 +1,8 @@
+/*
+    created by Grimaldo Dávila Guillén 
+    variables of connection 
+*/
+
 import axios from 'axios';
 import { HttpLink } from 'apollo-link-http';
 const GITHUB_BASE_URL = 'https://api.github.com/graphql';

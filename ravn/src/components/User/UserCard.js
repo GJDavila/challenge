@@ -1,36 +1,30 @@
-/*created by Grimaldo Dávila Guillén
-  25/04/2019
-*/
- 
 import React, { Component } from 'react';
+const image = " ";
 
- 
 
-class UserCard extends Component {
+class Info extends Component {
+    render() {
+        return (
+            <div className="mt-2 ml-2" id="info">
+                <div className="card" style={{ width: '18rem' }}>
+                    <img src={image} className="card-img-top" alt="avatar" />
+                    <div className="card-header">
+                       Usuario: {this.props.searchUser}
+                </div>
 
-  render(){
- 
-  return (
-    
-    <div className="card" style={{width: '50rem'}}>
-    <div className="card-body row">
-      <div className="col-4">
-        <img src={"https://avatars2.githubusercontent.com/u/22488492?v=4"} className="img-fluid" style={{ width: '280px' }} />
-      </div>
-      <div className="col">
-        <div class="card-header">Header</div>
+                    <div className="card-body">
+                        <p className="card-text">
+                            Some quick example text to build on the card title
+                             and make up the bulk of the card's content.
+                        </p>
+                        <a href="#info" className="card-link">Card link</a>
+                    </div>
+                </div>
 
-        <p className="card-text">
-         { this.props.data.name} ss
-        </p>
-        <a href="#" className="card-link">Card link</a>
-      </div>
-    </div>
-  </div>
-  );
-  
-  }
-
+            </div>
+        )
+    }
 }
 
-export default UserCard;
+export default Info;
+ 
