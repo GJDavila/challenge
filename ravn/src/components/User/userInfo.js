@@ -29,7 +29,7 @@ class UserInfo extends Component {
                         <p className="card-text">
                           {this.props.location}
                          </p>
-                        <a href={this.props.url} className="card-link">Ver en Github</a>
+                        <a target='_blank' href={this.props.url} className="card-link">Ver en Github</a>
                     </div>
                 </div>
 

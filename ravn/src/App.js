@@ -16,7 +16,7 @@ class App extends Component {
       searchUser: '',
       results: '',
       body:'',
-      login:'gjdavila',
+      login:'',
       type:''
     };
 

@@ -3,7 +3,7 @@
     variables of connection 
 */
 
- import { HttpLink } from 'apollo-link-http';
+import { HttpLink } from 'apollo-link-http';
 const GITHUB_BASE_URL = 'https://api.github.com/graphql';
 
 export const httpLink = new HttpLink({

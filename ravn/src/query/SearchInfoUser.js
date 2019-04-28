@@ -26,7 +26,7 @@ export const GET_CURRENT_USER = gql` query user($name: String!){
       avatarUrl,
       email,
       name,
-       repositories( first:$totalPerPage,before:$prev ,after:$next ) {
+       repositories( first:$totalPerPage,before:$prev ,after:$next,  orderBy:{field:UPDATED_AT,direction:DESC}) {
      
          totalCount
          edges {
@@ -34,7 +34,12 @@ export const GET_CURRENT_USER = gql` query user($name: String!){
              name,
              updatedAt,
              description,
-             url
+             url,
+             languages(first:1){
+              nodes{
+                name
+              }
+            }
              
            }cursor
          }
