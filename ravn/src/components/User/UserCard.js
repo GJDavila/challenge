@@ -31,9 +31,9 @@ class UserCard extends Component {
                         </p>
                         <div className="row">
                             <div className="col">
-                                <button className="btn btn-success" target='_blank' href={this.props.infocard.node.url}>
+                                <a className="btn btn-success" target='_blank' href={this.props.infocard.node.url}>
                                     Ver Perfil en Github
-                                </button>
+                                </a>
                             </div>
 
 

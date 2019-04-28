@@ -24,7 +24,7 @@ class RepositoryCard extends Component {
 
               </p>
               <div className="row ml-2">
-                <span class="repo-language-color">
+                <span className="repo-language-color">
                 </span>
                 <p className="card-text ml-2">
                   {this.props.infocard.node.languages.nodes[0] !== undefined && this.props.infocard.node.languages.nodes[0].name}
@@ -33,7 +33,7 @@ class RepositoryCard extends Component {
 
             </div>
             <div className="col">
-              <button className="btn btn-primary" target='_blank' href={this.props.infocard.node.url} >Ver en Github</button>
+              <a className="btn btn-primary" target='_blank' href={this.props.infocard.node.url} >Ver en Github</a>
             </div>
           </div>
         </div>
