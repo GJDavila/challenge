@@ -13,24 +13,22 @@
 
 import React, { Component } from 'react';
 
-class repositoryCard extends Component {
+class RepositoryCard extends Component {
   render() {
 
-   
+
     return (
-      <div style={{ backgroundColor: "#e1e4e8" }} id="repos">
-         <div className="card" style={{ width: '50rem' }} >
-          <div className="card-body row">
-            <div className="col-4">
-            {this.props.node.name}
-            </div>
-            <div className="col">
-              <div className="card-header">{this.props.node.name}</div>
-              <p className="card-text">
-              {this.props.node.description}
-              </p>
-              <a href="#repos" className="card-link">{this.props.node.url}</a>
-            </div>
+      <div className="mt-2 ml-2" >
+        <div className="card">
+          <div className="card-header">
+            {this.props.infocard.node.name}
+          </div>
+
+          <div className="card-body">
+            <p className="card-text">
+            {this.props.infocard.node.description}
+            </p>
+            <a target='_blank' href=  {this.props.infocard.node.url} className="card-link">link en github</a>
           </div>
         </div>
       </div>
@@ -38,4 +36,4 @@ class repositoryCard extends Component {
   }
 }
 
-export default repositoryCard;
+export default RepositoryCard;

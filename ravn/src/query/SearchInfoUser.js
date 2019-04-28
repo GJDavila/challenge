@@ -18,10 +18,10 @@ export const GET_CURRENT_USER = gql` query user($name: String!){
   
   /*    query to get data from user or repository  */
   export const GET_REPOSITORIES_USER = gql` 
-  query user($name: String!,$next: String!){
-    user(login: $name) {
+  query user($login: String!,$totalPerPage:Int!,$prev:String,$next:String){
+    user(login: $login) {
       
-       repositories(  first:5 ,after:$next ) {
+       repositories( first:$totalPerPage,before:$prev ,after:$next ) {
      
          totalCount
          edges {
@@ -44,16 +44,14 @@ export const GET_CURRENT_USER = gql` query user($name: String!){
   `;
   
 
-/*
+/**************************************************************
   query to get data from user or repository
   input:
     nameUser : user name to search
     typeData : USER/REPOSITORY   
     totalPerPage: total number of elements per page
     cursor: current position 
-
-
-*/
+**************************************************************/
 export const GET_LIST_DATA =gql`
 
 query getListData($queryString: String!, $typeData:SearchType!,$totalPerPage:Int!,$prev:String,$next:String) {
