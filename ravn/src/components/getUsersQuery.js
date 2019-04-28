@@ -3,25 +3,35 @@ import { Query } from "react-apollo";
 import ListCard from "./list/listCard";
 import UserInfo from "./User/userInfo";
 
+
 class GetUsersQuery extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            next:'',
-            prev:''
+            next: '',
+            prev: '',
+            hasNextPage:'',
+            hasPreviousPage:'',
+            page:1,
+            total:0
+            
         }
-       this.pagination=this.pagination.bind(this);
+        this.pagination = this.pagination.bind(this);
+         
     }
 
-    pagination(move,cursor){
-        move=='next'?this.setState({next:cursor,prev:''})
-                    :this.setState({next:'',prev:cursor});
+    
+    pagination(move, cursor) {
+       
+        move == 'next' ? this.setState({ next: cursor, prev: '',page:this.state.page+1 })
+                       : this.setState({ next: '', prev: cursor ,page:this.state.page-1});
     }
 
     render() {
-        let variablesData = this.state.next !='' ?{login: this.props.login,queryString: this.props.user,typeData: 'USER',totalPerPage: 5,next: this.state.next}
-                                                 :this.state.prev !='' ?{login: this.props.login,queryString: this.props.user,typeData: 'USER',totalPerPage: 5,prev: this.state.prev}
-                                                                       :{login: this.props.login,queryString: this.props.user,typeData: 'USER',totalPerPage: 5}
+        let numPerPage = 10;
+        let variablesData = this.state.next != '' ? { login: this.props.login, queryString: this.props.user, typeData: 'USER', totalPerPage: numPerPage, next: this.state.next }
+            : this.state.prev != '' ? { login: this.props.login, queryString: this.props.user, typeData: 'USER', totalPerPagePrev: numPerPage, prev: this.state.prev }
+                                    : { login: this.props.login, queryString: this.props.user, typeData: 'USER', totalPerPage: numPerPage }
         return (
             //  $queryString: String!, $typeData:SearchType!,$totalPerPage:Int!,$prev:String,$next:String
             <Query query={this.props.query}
@@ -30,6 +40,7 @@ class GetUsersQuery extends Component {
                 {result => {
                     if (result.loading) return <p>loading...</p>;
                     if (result.error) return <p>{result.error.message}</p>;
+                    console.log(result.data);
                     return (
                         <div>
 
@@ -54,8 +65,17 @@ class GetUsersQuery extends Component {
                                         func_pagination={this.pagination}
                                         cursor={this.props.type == 'user' ? result.data.search.pageInfo.endCursor
                                                                           : result.data.user.repositories.pageInfo.endCursor}
-                                         
-                                    />
+                                        cursorPrev={this.props.type == 'user' ? result.data.search.pageInfo.startCursor
+                                                                          : result.data.user.repositories.pageInfo.startCursor}
+                                        hasNextPage={this.props.type == 'user' ? result.data.search.pageInfo.hasNextPage
+                                                                          : result.data.user.repositories.pageInfo.hasNextPage}
+                                        hasPreviousPage={this.props.type == 'user' ? result.data.search.pageInfo.hasPreviousPage
+                                                                          : result.data.user.repositories.pageInfo.hasPreviousPage}
+                                        page={this.state.page}
+                                        total={this.props.type == 'user' ? result.data.search.userCount
+                                                                        : result.data.user.repositories.totalCount}
+                                        clearData={this.clearData}
+                                   />
                                 </div>
                             </div>
 

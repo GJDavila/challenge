@@ -7,14 +7,14 @@ import React, { Component } from 'react';
         componentTemplate:  
 */
 class ListCard extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            table:''
+        this.state = {
+            table: ''
         }
-        this.paginate=this.paginate.bind(this);
+
     }
-    componentDidMount(){
+    componentDidMount() {
         let comp = this.props.componentTemplate;
         let table = this.props.data.edges.map((value, i) => {
             return (
@@ -24,31 +24,67 @@ class ListCard extends Component {
         this.setState({
             table
         })
+
     }
-  
-    paginate(){
-        
-    }
+
     render() {
-       
-      
+
+
         return (
             <div >
-                {this.state.table}
+                <div >
 
-                <nav aria-label="Page navigation example">
-                    <ul class="col-6 pagination">
-                        <li class="page-item">
-                            <a class="page-link" onClick={this.props.func_pagination.bind(this,'prev',this.props.cursor)} href="#">Previous</a>
-                        </li>
+                    {this.state.table}
+                </div>
+                <div >
 
-                        <li class="page-item">
-                            <a class="page-link" onClick={this.props.func_pagination.bind(this,'next',this.props.cursor)} href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+                    <nav aria-label="Page navigation"
+                        className="mt-2"
+                        style={{ marginLeft: '100%' }}>
+                        <ul className="pagination">
+                            {this.props.hasPreviousPage === true &&
+                                <li className="page-item" >
+                                    <a className="page-link"
+                                        onClick={this.props.func_pagination.bind(this, 'prev', this.props.cursorPrev)}
+                                        href="#"
+                                        aria-label="Previous">Previous</a>
+                                </li>}
+ 
+                            <li className="page-item" >
+                                    <a className="page-link"
+                                        href="#"
+                                        aria-label="Previous">
+                                        {this.props.page}
+                                        </a>
+                                </li>
+                                <li className="page-item" >
+                                    <a className="page-link"
+                                        href="#"
+                                        aria-label="Previous">
+                                        de
+                                        </a>
+                                </li>
+                                <li className="page-item" >
+                                    <a className="page-link"
+                                        href="#"
+                                        aria-label="Previous">
+                                        {Math.ceil(this.props.total / 10)}
+                                        </a>
+                                </li>
 
+                            
+                            {this.props.hasNextPage === true &&
+                                <li className="page-item">
+                                    <a className="page-link"
+                                        onClick={this.props.func_pagination.bind(this, 'next', this.props.cursor)}
+                                        href="#"
+                                        aria-label="Next">Next</a>
+                                </li>}
+                        </ul>
+                    </nav>
+                </div>
             </div>
+
         )
     }
 }

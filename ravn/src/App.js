@@ -36,7 +36,7 @@ class App extends Component {
 
   getUsers() {
     var temp = this.state.searchUser;
-
+    if(temp=='') {alert('Ingrese un usuario válido');return;}
     this.setState({
       results: temp,
       type:'user'

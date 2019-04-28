@@ -18,7 +18,7 @@ export const GET_CURRENT_USER = gql` query user($name: String!){
   
   /*    query to get data from user or repository  */
   export const GET_REPOSITORIES_USER = gql` 
-  query user($login: String!,$totalPerPage:Int!,$prev:String,$next:String){
+  query user($login: String!,$totalPerPage:Int,$totalPerPagePrev:Int,$prev:String,$next:String){
     user(login: $login) {
       id,
       login,
@@ -26,7 +26,7 @@ export const GET_CURRENT_USER = gql` query user($name: String!){
       avatarUrl,
       email,
       name,
-       repositories( first:$totalPerPage,before:$prev ,after:$next,  orderBy:{field:UPDATED_AT,direction:DESC}) {
+       repositories( first:$totalPerPage,last:$totalPerPagePrev,before:$prev ,after:$next,  orderBy:{field:UPDATED_AT,direction:DESC}) {
      
          totalCount
          edges {
@@ -45,7 +45,9 @@ export const GET_CURRENT_USER = gql` query user($name: String!){
          }
          pageInfo {
            endCursor
+           startCursor
            hasNextPage
+           hasPreviousPage
          }
        
       } 
@@ -64,8 +66,8 @@ export const GET_CURRENT_USER = gql` query user($name: String!){
 **************************************************************/
 export const GET_LIST_DATA =gql`
 
-query getListData($queryString: String!, $typeData:SearchType!,$totalPerPage:Int!,$prev:String,$next:String) {
-  search(query: $queryString, type: $typeData, first:$totalPerPage,before:$prev ,after:$next) {
+query getListData($queryString: String!, $typeData:SearchType!,$totalPerPage:Int,$totalPerPagePrev:Int,$prev:String,$next:String) {
+  search(query: $queryString, type: $typeData, first:$totalPerPage,last:$totalPerPagePrev,before:$prev ,after:$next) {
     userCount
     edges {
       node {
@@ -95,7 +97,9 @@ query getListData($queryString: String!, $typeData:SearchType!,$totalPerPage:Int
       }cursor
     }  pageInfo {
       endCursor
+      startCursor
       hasNextPage
+      hasPreviousPage
     }
   }
 }

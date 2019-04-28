@@ -1,68 +1,96 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## GraphQLChallenge
 
-## Available Scripts
+Ravn challenge. \
+This project allows you to search github users and see their repositories. 
 
-In the project directory, you can run:
+### Built with
+* [Github Api for GraphQL](https://developer.github.com/v4/)
+* [GraphQL](https://graphql.org/)
+* [Apollo-Client](https://www.apollographql.com/docs/react/)
+* [ReactJS](https://reactjs.org/)
 
-### `npm start`
+### Clone project
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* In the upper-right corner of this page, click the **Clone or download** button.
+* Navigate to the folder you want to clone this project and run ```git clone https://github.com/GJDavila/challenge.git``` on the shell.
+* or click **Download Zip** and then extract the zip file.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+### Creating a token
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Verify your email address.
 
-### `npm run build`
+- In the upper-right corner of any page, click your profile photo, then click **Settings**.
+ 
+ ![Settings](https://help.github.com/assets/images/help/settings/userbar-account-settings.png)&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+ - In the left sidebar, click **Emails**.
+ 
+ ![Emails](https://help.github.com/assets/images/help/settings/settings-sidebar-emails.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Next to your email address, click **Send verification email**.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+ ![Verification](https://help.github.com/assets/images/help/settings/email-verify-button.png)&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+ - Github will send you an email with a link in it. After you click that link, you will be taken to your GitHub dashboard and see a confirmation banner.
+ 
+ ![Banner](https://help.github.com/assets/images/help/settings/email-verification-confirmation-banner.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. In the upper-right corner of any page, click your profile photo, then click **Settings**.
 
-### `npm run eject`
+![Sttings](https://help.github.com/assets/images/help/settings/developer-settings.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. In the left sidebar, click **Developer Settings**.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Developer Settings](https://help.github.com/assets/images/help/settings/developer-settings.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4. In the left sidebar, click **Personal access tokens**.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Personal access tokens](https://help.github.com/assets/images/help/settings/personal_access_tokens_tab.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
-## Learn More
+5. Click **Generate new token**.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Generate new token](https://help.github.com/assets/images/help/settings/generate_new_token.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+6. Give your token a name.
 
-### Code Splitting
+![Token name](https://help.github.com/assets/images/help/settings/token_description.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+7. Select the permissions that this token will have.
 
-### Analyzing the Bundle Size
+![Permissions](https://help.github.com/assets/images/help/settings/token_scopes.gif)&nbsp;&nbsp;&nbsp;&nbsp;
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+8. Click **Generate token**.
 
-### Making a Progressive Web App
+![Generate token](https://help.github.com/assets/images/help/settings/generate_token.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+9. Copy the token to your clipboard and save it for later.
 
-### Advanced Configuration
+![Copy token](https://help.github.com/assets/images/help/settings/personal_access_tokens.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### Adding the token to the project
 
-### Deployment
+1. Go to /src/config/connection.js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+2. Replace the following line with your token inside double quotes.
 
-### `npm run build` fails to minify
+```process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN``` 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+It should look like this
+
+```
+export const httpLink = new HttpLink({
+  uri: GITHUB_BASE_URL,
+  headers: {
+    authorization: `Bearer ${
+      "my_personal_token"
+    }`,
+  },
+});
+```
+### Run project
+
+* Navigate to the project folder inside the shell.
+* Run ```npm start``` 
+
+
