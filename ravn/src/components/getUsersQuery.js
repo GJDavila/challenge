@@ -23,7 +23,7 @@ class GetUsersQuery extends Component {
     
     pagination(move, cursor) {
        
-        move == 'next' ? this.setState({ next: cursor, prev: '',page:this.state.page+1 })
+        move === 'next' ? this.setState({ next: cursor, prev: '',page:this.state.page+1 })
                        : this.setState({ next: '', prev: cursor ,page:this.state.page-1});
     }
 
@@ -40,7 +40,6 @@ class GetUsersQuery extends Component {
                 {result => {
                     if (result.loading) return <p>loading...</p>;
                     if (result.error) return <p>{result.error.message}</p>;
-                    console.log(result.data);
                     return (
                         <div>
 

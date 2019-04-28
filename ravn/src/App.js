@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Query } from "react-apollo";
 
 import { GET_LIST_DATA,GET_REPOSITORIES_USER } from './query/SearchInfoUser'
 import RepositoryCard from "./components/repositories/repositoryCard";
@@ -52,7 +51,6 @@ class App extends Component {
     })
   }
   render() {
-    const temporal = "";
 
     return (
       <div className="App">

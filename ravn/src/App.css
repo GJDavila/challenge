@@ -25,7 +25,16 @@
 
 .body{
   margin-top: 80px;
-  
+}
+.repo-language-color{
+  background-color: #ffac45;
+  border-radius: 50%;
+display: inline-block;
+height: 12px;
+position: relative;
+top: 1px;
+width: 12px;
+margin-top: 5px;
 }
 @keyframes App-logo-spin {
   from {

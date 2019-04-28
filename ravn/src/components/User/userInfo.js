@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-const image = " ";
 
 
 class UserInfo extends Component {

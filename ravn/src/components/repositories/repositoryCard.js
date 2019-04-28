@@ -11,17 +11,30 @@ class RepositoryCard extends Component {
 
 
     return (
-      <div className="mt-2 ml-2" >
-        <div className="card">
+      <div className="mt-2 ml-2" > 
+        <div className="card text-left">
           <div className="card-header">
-            {this.props.infocard.node.name}
+            <p className="text-primary" style={{ fontSize: '20px' }}> {this.props.infocard.node.name} </p>
           </div>
 
-          <div className="card-body">
-            <p className="card-text">
-            {this.props.infocard.node.description}
-            </p>
-            <a target='_blank' href=  {this.props.infocard.node.url} className="card-link">Ver en Github</a>
+          <div className="card-body row">
+            <div className="col-7">
+              <p className="card-text">
+                {this.props.infocard.node.description}
+
+              </p>
+              <div className="row ml-2">
+                <span class="repo-language-color">
+                </span>
+                <p className="card-text ml-2">
+                  {this.props.infocard.node.languages.nodes[0] !== undefined && this.props.infocard.node.languages.nodes[0].name}
+                </p>
+              </div>
+
+            </div>
+            <div className="col">
+              <button className="btn btn-primary" target='_blank' href={this.props.infocard.node.url} >Ver en Github</button>
+            </div>
           </div>
         </div>
       </div>
