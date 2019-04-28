@@ -40,7 +40,7 @@ class ListCard extends Component {
 
                     <nav aria-label="Page navigation"
                         className="mt-2"
-                        style={{ marginLeft: '100%' }}>
+                        style={{ marginLeft: '50%' }}>
                         <ul className="pagination">
                             {this.props.hasPreviousPage === true &&
                                 <li className="page-item" >
