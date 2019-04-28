@@ -4,30 +4,32 @@ const image = " ";
 
 class UserInfo extends Component {
     render() {
+ 
+        
         return (
             <div className="mt-2 ml-2" id="info">
                 <div className="card" style={{ width: '18rem' }}>
-                    <img src="" className="card-img-top" alt="avatar" />
+                    <img src={this.props.avatarUrl} className="card-img-top" alt="avatar" />
                     <div className="card-header">
-                        Usuario: name
+                       {this.props.name}
                         <p className="card-text">
-                           login
+                          {this.props.login}
                         </p>
                    </div>
 
                     <div className="card-body">
                         <p className="card-text">
-                            email
+                            {this.props.email}
                        </p>
 
                         <p className="card-text">
-                            bio
+                            {this.props.bio}
                         </p>
 
                         <p className="card-text">
-                           location
+                          {this.props.location}
                          </p>
-                        <a href="#info" className="card-link">Card link</a>
+                        <a href={this.props.url} className="card-link">Ver en Github</a>
                     </div>
                 </div>
 

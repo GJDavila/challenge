@@ -1,3 +1,10 @@
+/*   created by Grimaldo Dávila Guillén 
+
+   Component to show user info
+
+*/
+
+
 import React, { Component } from 'react';
 
 class UserCard extends Component{
@@ -24,7 +31,7 @@ class UserCard extends Component{
                         </a><br/>
                         <a  href="#" 
                             className="card-link"
-                            onClick={this.props.getRepos}>
+                            onClick={this.props.getRepos.bind(this, this.props.infocard.node.login)}>
                             Ver Repositorios
                         </a>
                     </div>

@@ -9,7 +9,6 @@ import React, { Component } from 'react';
 class ListCard extends Component {
     render() {
         let comp=this.props.componentTemplate;
-        console.log(this.props.data.edges);
         let table= this.props.data.edges.map((value,i)=>{
                 return(
                     React.cloneElement(comp, {infocard:value, key:i, getRepos:this.props.getRepos})

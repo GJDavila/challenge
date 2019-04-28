@@ -2,12 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 import { Query } from "react-apollo";
 
-//import UserCard from './components/User/UserCard'
 import { GET_LIST_DATA,GET_REPOSITORIES_USER } from './query/SearchInfoUser'
-import UserInfo from "./components/User/userInfo";
 import RepositoryCard from "./components/repositories/repositoryCard";
 import UserCard from "./components/User/UserCard";
-import UserInfoScreen from "./components/User/userInfoScreen";
  import GetUsersQuery from "./components/getUsersQuery";
 
 
@@ -47,12 +44,12 @@ class App extends Component {
 
   }
 
-  getRepos() {
+  getRepos(loginUser = '') {
     
     this.setState({
-      type:'repository'
+      type:'repository',
+      login:loginUser
     })
-
   }
   render() {
     const temporal = "";
@@ -75,10 +72,12 @@ class App extends Component {
           </div>
         </nav>
 
-        <div className="body mx-auto col-6">
+        
         {
           this.state.type==='user' && 
+          <div className="body mx-auto col-6">
           <GetUsersQuery user={this.state.results} type={this.state.type} getRepos={this.getRepos} UserCard={<UserCard/>} query={GET_LIST_DATA} />
+          </div>
         }
         {
           this.state.type==='repository' && 
@@ -87,7 +86,7 @@ class App extends Component {
            
         }
         
-        </div>
+      
 
 
 

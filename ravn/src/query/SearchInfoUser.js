@@ -20,7 +20,12 @@ export const GET_CURRENT_USER = gql` query user($name: String!){
   export const GET_REPOSITORIES_USER = gql` 
   query user($login: String!,$totalPerPage:Int!,$prev:String,$next:String){
     user(login: $login) {
-      
+      id,
+      login,
+      url,
+      avatarUrl,
+      email,
+      name,
        repositories( first:$totalPerPage,before:$prev ,after:$next ) {
      
          totalCount

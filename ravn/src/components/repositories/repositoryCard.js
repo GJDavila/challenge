@@ -1,13 +1,6 @@
 /*   created by Grimaldo Dávila Guillén 
 
-    receive node object with:
-     node {
-             name,
-             updatedAt,
-             description,
-             url
-             
-           }
+   Component to show repository info
 
 */
 
@@ -28,7 +21,7 @@ class RepositoryCard extends Component {
             <p className="card-text">
             {this.props.infocard.node.description}
             </p>
-            <a target='_blank' href=  {this.props.infocard.node.url} className="card-link">link en github</a>
+            <a target='_blank' href=  {this.props.infocard.node.url} className="card-link">Ver en Github</a>
           </div>
         </div>
       </div>
